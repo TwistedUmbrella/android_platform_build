@@ -150,6 +150,12 @@ endif
 # are specific to the user's build configuration.
 include $(BUILD_SYSTEM)/envsetup.mk
 
+ifneq ($(RECOVERY_VARIANT),)
+# General entries for project pathmap.  Any entries listed here should
+# be device and hardware intedpendent.
+$(call set_project_variant_path,recovery,RECOVERY_VARIANT,bootable/recovery)
+endif
+
 # The build system exposes several variables for where to find the kernel
 # headers:
 #   TARGET_DEVICE_KERNEL_HEADERS is automatically created for the current
